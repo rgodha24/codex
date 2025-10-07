@@ -139,10 +139,7 @@ impl Renderable for InsetRenderable {
 }
 
 impl InsetRenderable {
-    pub fn new(child: impl Into<Box<dyn Renderable>>, insets: Insets) -> Self {
-        Self {
-            child: child.into(),
-            insets,
-        }
+    pub fn new(child: Box<dyn Renderable>, insets: Insets) -> Self {
+        Self { child, insets }
     }
 }
