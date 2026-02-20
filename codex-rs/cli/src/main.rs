@@ -99,6 +99,10 @@ enum Subcommand {
     /// Start Codex as an MCP server (stdio).
     McpServer,
 
+    /// Start Codex as an ACP (Agent Client Protocol) agent (stdio).
+    #[clap(name = "acp")]
+    Acp,
+
     /// [experimental] Run the app server or related tooling.
     AppServer(AppServerCommand),
 
@@ -591,6 +595,9 @@ async fn cli_main(codex_linux_sandbox_exe: Option<PathBuf>) -> anyhow::Result<()
         }
         Some(Subcommand::McpServer) => {
             codex_mcp_server::run_main(codex_linux_sandbox_exe, root_config_overrides).await?;
+        }
+        Some(Subcommand::Acp) => {
+            codex_acp::run_main(codex_linux_sandbox_exe, root_config_overrides).await?;
         }
         Some(Subcommand::Mcp(mut mcp_cli)) => {
             // Propagate any root-level config overrides (e.g. `-c key=value`).

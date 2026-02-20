@@ -1,0 +1,38 @@
+[package]
+name = "codex-acp"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "An ACP-compatible coding agent powered by Codex"
+
+[lib]
+doctest = false
+name = "codex_acp"
+path = "src/lib.rs"
+
+[lints]
+workspace = true
+
+[dependencies]
+agent-client-protocol = { version = "=0.9.4", features = ["unstable"] }
+anyhow = { workspace = true }
+async-trait = { workspace = true }
+codex-apply-patch = { workspace = true }
+codex-core = { workspace = true }
+codex-login = { workspace = true }
+codex-mcp-server = { workspace = true }
+codex-protocol = { workspace = true }
+codex-utils-approval-presets = { workspace = true }
+codex-utils-cli = { workspace = true }
+heck = "0.5.0"
+itertools = { workspace = true }
+regex-lite = { workspace = true }
+serde = { workspace = true, features = ["derive"] }
+serde_json = { workspace = true }
+shlex = { workspace = true }
+tokio = { workspace = true, features = ["rt-multi-thread", "macros", "io-std", "io-util"] }
+tokio-util = { workspace = true, features = ["compat"] }
+tracing = { workspace = true, features = ["log"] }
+tracing-subscriber = { workspace = true, features = ["env-filter", "fmt"] }
+unicode-segmentation = { workspace = true }
+uuid = { workspace = true, features = ["v4"] }
